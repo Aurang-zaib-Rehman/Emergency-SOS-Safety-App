@@ -1,23 +1,19 @@
+// pages/Dashboard.jsx
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Shield, Users, MapPin, AlertCircle } from 'lucide-react';
+import SOSButton from '../components/SOSButton';
+import { formatTime, formatDate } from '../utils/helpers';
 
 export default function Dashboard() {
   const { user } = useAuth();
-
-  // Live clock
   const [time, setTime] = useState(new Date());
+
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
-
-  const formatTime = (date) =>
-    date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-
-  const formatDate = (date) =>
-    date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
   return (
     <div className="min-h-screen bg-gray-950 px-6 py-10">
@@ -34,27 +30,21 @@ export default function Dashboard() {
               <p className="text-gray-400 text-sm mt-1">Your safety dashboard is active.</p>
             </div>
           </div>
-
-          {/* Live Time - right side */}
+          {/* Live Clock */}
           <div className="text-right hidden sm:block">
             <p className="text-2xl font-bold text-white tabular-nums">{formatTime(time)}</p>
             <p className="text-gray-500 text-xs mt-1">{formatDate(time)}</p>
           </div>
         </div>
 
-        {/* SOS Button */}
+        {/* SOS Button — uses SOSButton component */}
         <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8 mb-6 text-center">
           <p className="text-gray-400 text-sm mb-6">Press in case of emergency</p>
-          <button className="w-40 h-40 rounded-full bg-red-600 hover:bg-red-500 active:scale-95 transition-all duration-150 shadow-2xl shadow-red-900/60 border-4 border-red-400/20 text-white font-black text-3xl tracking-widest mx-auto flex items-center justify-center">
-            SOS
-          </button>
-          <p className="text-xs text-gray-600 mt-5">Sends alert + location to all saved contacts</p>
+          <SOSButton />
         </div>
 
         {/* Quick Link Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6">
-
-          {/* Manage Contacts */}
           <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-xl bg-blue-600/20 border border-blue-600/30 flex items-center justify-center">
@@ -71,7 +61,6 @@ export default function Dashboard() {
             </Link>
           </div>
 
-          {/* Emergency Services Map */}
           <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-xl bg-green-600/20 border border-green-600/30 flex items-center justify-center">
@@ -89,10 +78,10 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Setup & Important Information */}
+        {/* Setup Info */}
         <div className="bg-yellow-950/30 border border-yellow-800/40 rounded-2xl p-6">
           <div className="flex items-center gap-3 mb-5">
-            <div className="w-9 h-9 rounded-xl bg-yellow-600/20 border border-yellow-600/30 flex items-center justify-center flex-shrink-0">
+            <div className="w-9 h-9 rounded-xl bg-yellow-600/20 border border-yellow-600/30 flex items-center justify-center shrink-0">
               <AlertCircle className="w-5 h-5 text-yellow-500" />
             </div>
             <h2 className="text-white font-bold text-base">Setup & Important Information</h2>
@@ -106,7 +95,7 @@ export default function Dashboard() {
               'Test SOS in safe environment before emergencies',
             ].map((tip) => (
               <div key={tip} className="flex items-start gap-2 text-gray-300 text-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 flex-shrink-0 mt-1.5"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 shrink-0 mt-1.5"></span>
                 {tip}
               </div>
             ))}

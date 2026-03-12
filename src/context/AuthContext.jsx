@@ -1,42 +1,40 @@
+// context/AuthContext.jsx
 import { createContext, useContext, useState } from 'react';
+import { getUser, setUser, removeUser, getUsers, setUsers } from '../utils/localStorage';
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(() => {
-    const stored = localStorage.getItem('sos_user');
-    return stored ? JSON.parse(stored) : null;
-  });
+  const [user, setUserState] = useState(() => getUser());
 
   const signup = (name, email, password) => {
-    const users = JSON.parse(localStorage.getItem('sos_users') || '[]');
-    const exists = users.find(u => u.email === email);
-    if (exists) return { success: false, error: 'Email already registered.' };
+    const users = getUsers();
+    if (users.find(u => u.email === email))
+      return { success: false, error: 'Email already registered.' };
 
     const newUser = { name, email, password };
-    users.push(newUser);
-    localStorage.setItem('sos_users', JSON.stringify(users));
+    setUsers([...users, newUser]);
 
-    const sessionUser = { name, email };
-    localStorage.setItem('sos_user', JSON.stringify(sessionUser));
-    setUser(sessionUser);
+    const session = { name, email };
+    setUser(session);
+    setUserState(session);
     return { success: true };
   };
 
   const login = (email, password) => {
-    const users = JSON.parse(localStorage.getItem('sos_users') || '[]');
+    const users = getUsers();
     const found = users.find(u => u.email === email && u.password === password);
     if (!found) return { success: false, error: 'Invalid email or password.' };
 
-    const sessionUser = { name: found.name, email: found.email };
-    localStorage.setItem('sos_user', JSON.stringify(sessionUser));
-    setUser(sessionUser);
+    const session = { name: found.name, email: found.email };
+    setUser(session);
+    setUserState(session);
     return { success: true };
   };
 
   const logout = () => {
-    localStorage.removeItem('sos_user');
-    setUser(null);
+    removeUser();
+    setUserState(null);
   };
 
   return (

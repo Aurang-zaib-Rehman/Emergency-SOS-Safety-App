@@ -78,7 +78,7 @@ export default function Login() {
 
             {error && (
               <div className="flex items-center gap-2.5 bg-red-950/50 border border-red-800/50 text-red-300 text-sm px-4 py-3 rounded-xl">
-                <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                <AlertCircle className="w-4 h-4 shrink-0" />
                 {error}
               </div>
             )}
