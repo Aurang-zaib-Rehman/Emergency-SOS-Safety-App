@@ -4,8 +4,8 @@ import { Shield, LayoutDashboard, Users, Map, LogOut } from 'lucide-react';
 
 const NAV_LINKS = [
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { to: '/contacts',  label: 'Contacts',  icon: Users },
-  { to: '/map',       label: 'Map',        icon: Map },
+  { to: '/contact',   label: 'Contact',   icon: Users },
+  { to: '/map',       label: 'Map',       icon: Map },
 ];
 
 export default function Navbar() {
@@ -27,7 +27,7 @@ export default function Navbar() {
           <span className="font-bold text-white text-sm tracking-wide">SafeAlert</span>
         </Link>
 
-        {/* Links */}
+        {/* Nav Links */}
         <div className="flex items-center gap-1">
           {NAV_LINKS.map(({ to, label, icon: Icon }) => (
             <Link key={to} to={to}
@@ -41,13 +41,32 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Logout */}
-        <button onClick={handleLogout}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-gray-500 hover:text-red-400 hover:bg-red-950/30 transition-colors">
-          <LogOut className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">Logout</span>
-        </button>
+        {/* Right: username + divider + logout */}
+        <div className="flex items-center gap-3">
 
+          {/* Avatar + Name */}
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-full bg-red-600 flex items-center justify-center flex-shrink-0">
+              <span className="text-white text-xs font-bold">
+                {user.name.charAt(0).toUpperCase()}
+              </span>
+            </div>
+            <span className="hidden sm:inline text-sm text-gray-300 font-medium">
+              {user.name}
+            </span>
+          </div>
+
+          {/* Divider */}
+          <div className="w-px h-4 bg-gray-700"></div>
+
+          {/* Logout */}
+          <button onClick={handleLogout}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-gray-500 hover:text-red-400 hover:bg-red-950/30 transition-colors">
+            <LogOut className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Logout</span>
+          </button>
+
+        </div>
       </div>
     </nav>
   );
