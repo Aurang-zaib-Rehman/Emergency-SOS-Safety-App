@@ -1,4 +1,3 @@
-// components/Navbar.jsx
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Shield, LayoutDashboard, Users, Map, LogOut } from 'lucide-react';

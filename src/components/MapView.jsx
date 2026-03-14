@@ -1,4 +1,3 @@
-// components/MapView.jsx
 import { useState } from 'react';
 import { MapPin, Info } from 'lucide-react';
 import MapFilters from './MapFilters';

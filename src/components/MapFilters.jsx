@@ -1,4 +1,3 @@
-// components/MapFilters.jsx
 import { LayoutGrid, Shield, Heart, Wrench, Fuel } from 'lucide-react';
 
 const FILTERS = [

@@ -1,4 +1,3 @@
-// components/Loader.jsx
 export default function Loader({ text = 'Loading...' }) {
   return (
     <div className="flex flex-col items-center justify-center gap-3 py-10">

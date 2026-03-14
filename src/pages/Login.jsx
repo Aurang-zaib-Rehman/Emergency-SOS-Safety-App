@@ -108,13 +108,6 @@ export default function Login() {
             </p>
           </div>
         </div>
-
-        {/* Demo hint */}
-        <div className="mt-4 bg-gray-900/50 border border-gray-800 rounded-xl p-4 text-center">
-          <p className="text-xs text-gray-500 font-mono">
-            Demo: Sign up with any email to try the app
-          </p>
-        </div>
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-// pages/Contacts.jsx
 import { useState, useEffect } from 'react';
 import { Users, Plus, X, Check, AlertCircle, User, Mail, Phone } from 'lucide-react';
 import ContactCard from '../components/ContactCard';

@@ -1,4 +1,3 @@
-// components/SOSButton.jsx
 import { useState } from 'react';
 import { AlertCircle, CheckCircle, Loader } from 'lucide-react';
 import { getCurrentLocation, buildGoogleMapsLink } from '../services/locationService';

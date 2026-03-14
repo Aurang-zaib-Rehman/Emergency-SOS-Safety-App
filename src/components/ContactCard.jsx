@@ -1,4 +1,3 @@
-// components/ContactCard.jsx
 import { Mail, Phone, Pencil, Trash2 } from 'lucide-react';
 
 export default function ContactCard({ contact, index, onEdit, onDelete }) {

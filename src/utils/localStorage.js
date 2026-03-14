@@ -1,6 +1,3 @@
-// utils/localStorage.js
-// All localStorage read/write helpers in one place
-
 export const getUser = () => {
   const stored = localStorage.getItem('sos_user');
   return stored ? JSON.parse(stored) : null;
