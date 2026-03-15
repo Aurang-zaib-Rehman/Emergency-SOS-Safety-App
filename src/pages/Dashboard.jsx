@@ -25,7 +25,7 @@ export default function Dashboard() {
               <Shield className="w-7 h-7 text-red-500" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-white">Hello, {user?.name} 👋</h1>
+              <h1 className="text-3xl font-bold text-white">Hello, {user?.name}</h1>
               <p className="text-gray-400 text-sm mt-1">Your safety dashboard is active.</p>
             </div>
           </div>
@@ -83,15 +83,14 @@ export default function Dashboard() {
             <div className="w-9 h-9 rounded-xl bg-yellow-600/20 border border-yellow-600/30 flex items-center justify-center shrink-0">
               <AlertCircle className="w-5 h-5 text-yellow-500" />
             </div>
-            <h2 className="text-white font-bold text-base">Setup & Important Information</h2>
+            <h2 className="text-white font-bold text-base">Important Information</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-10 ml-12">
             {[
               'Add emergency contacts before using SOS feature',
               'Enable location permissions for accurate alerts',
-              'Configure EmailJS credentials for email functionality',
-              'Add Google Maps API key for map features',
-              'Test SOS in safe environment before emergencies',
+              'Keep your profile information up to date',
+              'Use the map to familiarize yourself with nearby services'
             ].map((tip) => (
               <div key={tip} className="flex items-start gap-2 text-gray-300 text-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 shrink-0 mt-1.5"></span>
