@@ -42,8 +42,6 @@ export default function MapView() {
                 {[
                   'Your current location is marked with a red pin',
                   'Click on a filter button to search nearby services',
-                  'Click on any marker to see location details',
-                  'Configure Google Maps API key for full functionality',
                 ].map(tip => (
                   <div key={tip} className="flex items-center gap-2 text-gray-400 text-sm">
                     <span className="w-1.5 h-1.5 rounded-full bg-gray-500 shrink-0"></span>
