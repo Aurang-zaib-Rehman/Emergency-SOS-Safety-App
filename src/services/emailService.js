@@ -1,6 +1,3 @@
-// services/emailService.js
-// EmailJS integration for SOS alerts
-
 import emailjs from '@emailjs/browser';
 
 const SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
