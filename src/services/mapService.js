@@ -1,6 +1,3 @@
-// services/mapService.js
-// Google Maps Places API helpers
-
 export const PLACE_TYPES = {
   police:   { type: 'police',   keyword: 'police station', label: 'Police Stations' },
   hospital: { type: 'hospital', keyword: 'hospital',       label: 'Hospitals'       },
